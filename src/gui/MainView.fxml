@@ -6,32 +6,31 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MainViewController">
    <content>
       <VBox prefHeight="328.0" prefWidth="480.0">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Empresa">
+                <Menu mnemonicParsing="false" text="Cadastro">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Cadastro" />
-                        <MenuItem mnemonicParsing="false" text="Filial" />
-                        <MenuItem mnemonicParsing="false" text="Departamento" />
-                        <MenuItem mnemonicParsing="false" text="Outros" />
+                        <MenuItem fx:id="menuItemCadastroEmpresa" mnemonicParsing="false" onAction="#onMenuItemCadastroEmpresaAction" text="Empresa" />
+                        <MenuItem fx:id="menuItemCadastroFilial" mnemonicParsing="false" onAction="#onMenuItemCadastroFilialAction" text="Filial" />
+                        <MenuItem fx:id="menuItemCadastroDepartamento" mnemonicParsing="false" onAction="#onMenuItemCadastroDepartamentoAction" text="Departamento" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Usuários">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Incluir" />
-                        <MenuItem mnemonicParsing="false" text="Configurar" />
-                        <MenuItem mnemonicParsing="false" text="Excluir" />
+                    <MenuItem fx:id="menuItemUsuariosIncuir" mnemonicParsing="false" onAction="#onMenuItemUsuariosIncuir" text="Incluir" />
+                        <MenuItem fx:id="menuItemUsuariosConfigurar" mnemonicParsing="false" onAction="#onMenuItemUsuariosConfigurar" text="Configurar" />
+                        <MenuItem fx:id="menuItemUsuariosExcluir" mnemonicParsing="false" onAction="#onMenuItemUsuariosExcluir" text="Excluir" />
                   </items>
                 </Menu>
                   <Menu mnemonicParsing="false" text="Produtos">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="Incluir" />
-                        <MenuItem mnemonicParsing="false" text="Editar" />
-                        <MenuItem mnemonicParsing="false" text="Excluir" />
+                      <MenuItem fx:id="menuItemProdutoIncuir" mnemonicParsing="false" onAction="#onMmenuItemProdutoIncuir" text="Incluir" />
+                        <MenuItem fx:id="menuItemProdutoEditar" mnemonicParsing="false" onAction="#onMenuItemProdutoEditar" text="Editar" />
+                        <MenuItem fx:id="menuItemProdutoExcluir" mnemonicParsing="false" onAction="#onMenuItemProdutoExcluir" text="Excluir" />
                     </items>
                   </Menu>
                 <Menu mnemonicParsing="false" text="Ajuda">
