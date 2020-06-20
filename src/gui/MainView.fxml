@@ -35,8 +35,8 @@
                   </Menu>
                 <Menu mnemonicParsing="false" text="Ajuda">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Sobre o sistema" />
-                        <MenuItem mnemonicParsing="false" text="Suporte" />
+                    <MenuItem fx:id="menuItemAjudaSobre" mnemonicParsing="false" onAction="#onMenuItemAjudaSobre" text="Sobre o sistema" />
+                        <MenuItem fx:id="menuItemAjudaSuporte" mnemonicParsing="false" onAction="#onMenuItemAjudaSuporte" text="Suporte" />
                   </items>
                 </Menu>
               </menus>
