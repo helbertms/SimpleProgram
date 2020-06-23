@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox prefHeight="514.0" prefWidth="516.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+<VBox prefHeight="593.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartamentoListControle">
    <children>
       <Label prefHeight="30.0" prefWidth="75.0" text="Produtos">
          <font>
@@ -22,13 +21,14 @@
       </Label>
       <ToolBar prefHeight="40.0" prefWidth="200.0">
         <items>
-          <Button mnemonicParsing="false" text="Novo" />
+          <Button fx:id="btNovo" mnemonicParsing="false" onAction="#onBtNovoAction" text="Novo" />
         </items>
       </ToolBar>
-      <TableView prefHeight="443.0" prefWidth="516.0">
+      <TableView fx:id="tableViewDepartamento" prefHeight="443.0" prefWidth="516.0">
         <columns>
-          <TableColumn prefWidth="32.0" text="Id" />
-          <TableColumn prefWidth="118.0" text="Nome" />
+          <TableColumn fx:id="tableColumnId" prefWidth="40.0" text="Id" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="198.0" text="Nome" />
+            <TableColumn fx:id="tableColumnFilial" prefWidth="141.0" text="Filial" />
         </columns>
       </TableView>
    </children>

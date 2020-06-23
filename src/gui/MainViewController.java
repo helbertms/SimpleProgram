@@ -3,6 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import application.Main;
 import gui.util.Alerts;
@@ -15,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.service.DepartamentoService;
 
 public class MainViewController implements Initializable{
 
@@ -64,7 +66,12 @@ public class MainViewController implements Initializable{
 	}
 	@FXML
 	public void onMenuItemCadastroDepartamentoAction() {
-		loadView("/gui/DepartamentoList.fxml");
+		// Nessa chamada de método há uma AÇÃO DE INICIALIZAÇÃO COMO PARAMETRO
+		loadView("/gui/DepartamentoList.fxml", (DepartamentoListControle controle)->{
+			controle.setDepartamentoService (new DepartamentoService());
+			controle.updateTableView();
+			
+		});
 	}
 	
 	
@@ -102,7 +109,7 @@ public class MainViewController implements Initializable{
 	
 	@FXML
 	public void onMenuItemAjudaSobre() {
-		loadView("/gui/AjudaSobre.fxml");
+		loadView("/gui/AjudaSobre.fxml", x->{});
 	}
 	@FXML
 	public void onMenuItemAjudaSuporte() {
@@ -117,8 +124,9 @@ public class MainViewController implements Initializable{
 	}
 	
 	// Método para abrir uma tela por um chamado de metodo
+	// Parametrização do CONSUMER <T> passado ao método loadView para que a chamada do método aceite um construtor com inicializador como parametro.
 	
-	private synchronized void loadView(String absolutName) {
+	private synchronized <T> void loadView(String absolutName, Consumer<T> metodoInicializaca) {
 		
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
@@ -146,10 +154,14 @@ public class MainViewController implements Initializable{
 			 * SCROLLPANE e casting do VBox. 
 			 */
 			
+			// --- inicializando (inserindo) os dados no VIEW (tabela do Departamento)
+			// --- As duas linhas abaixo executam a ação passada como método na chamada da função loadView
+			T controle = loader.getController();
+			metodoInicializaca.accept(controle);
+			
 		}
 		catch (IOException e){
 			Alerts.showAlert("IOException error ", "Error at loader View ", e.getMessage(), AlertType.ERROR);
 		}
 	}
-
 }
