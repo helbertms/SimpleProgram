@@ -119,8 +119,6 @@ public class MainViewController implements Initializable{
 	// Métodos Inicialize da interface INICIALIZEBLE ----------------------------------------
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
-		
-		
 	}
 	
 	// Método para abrir uma tela por um chamado de metodo
@@ -139,19 +137,14 @@ public class MainViewController implements Initializable{
 			mainVbox.getChildren().clear(); // aqui eu limpo todos os filhos do meu mainVbox
 			mainVbox.getChildren().add(mainMenu);
 			mainVbox.getChildren().addAll(newVbox.getChildren());
-			
 			/* 
 			 * 1
 			 *  Instancia uma "SCENE" da janela principal (MAIN)
-			 *  Isso foi possível após declarar um ATRIBUTO mainScene da classe Scene
-			 *  e construir o método "getMainScene"
-			 */
-			
-			/* 
+			 *  Isso foi possível após declarar um ATRIBUTO mainScene da classe Scenee construir o método "getMainScene"
+			 *
 			 * 2
-			 * Pegar uma referencia do VBOX da JANELA PRINCIPAL (mainScene instanciado na classe Main), criando uma variável da classe VBOX
-			 * onde ele recebe o método getRoot (que pega o PRIMEIRO elemento da View "<ScrollPane") sendo necessário o casting do 
-			 * SCROLLPANE e casting do VBox. 
+			 * Pegar uma referencia do VBOX da JANELA PRINCIPAL (mainScene instanciado na classe Main), criando uma variável da classe VBOX onde ele 
+			 * recebe o método getRoot (que pega o PRIMEIRO elemento da View "<ScrollPane") sendo necessário o casting do SCROLLPANE e casting do VBox. 
 			 */
 			
 			// --- inicializando (inserindo) os dados no VIEW (tabela do Departamento)

@@ -28,7 +28,9 @@
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="40.0" text="Id" />
           <TableColumn fx:id="tableColumnNome" prefWidth="198.0" text="Nome" />
-            <TableColumn fx:id="tableColumnFilial" prefWidth="141.0" text="Filial" />
+            <TableColumn fx:id="tableColumnFilial" prefWidth="175.0" text="Filial" />
+            <TableColumn fx:id="tableColumnEDIT" prefWidth="75.0" />
+            <TableColumn fx:id="tableColumnREMOVE" prefWidth="75.0" />
         </columns>
       </TableView>
    </children>

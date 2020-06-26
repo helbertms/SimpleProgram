@@ -47,9 +47,6 @@ public class Departamento implements Serializable {
 	}
 	
 
-	
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,7 +88,4 @@ public class Departamento implements Serializable {
 	public String toString() {
 		return "Departamento [id=" + id + ", nome=" + nome +", filial = ]" + filial;
 	}
-
-	
-	
 }
