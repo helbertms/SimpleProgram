@@ -4,7 +4,7 @@ package model.entites;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Seller implements Serializable{
+public class Funcionarios implements Serializable{
 	
 	
 	private static final long serialVersionUID = 1L;
@@ -23,10 +23,10 @@ public class Seller implements Serializable{
 	
 	// Construtores 
 	
-	public Seller() {
+	public Funcionarios() {
 	}
 
-	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Departamento department) {
+	public Funcionarios(Integer id, String name, String email, Date birthDate, Double baseSalary, Departamento department) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
@@ -99,7 +99,7 @@ public class Seller implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Seller other = (Seller) obj;
+		Funcionarios other = (Funcionarios) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

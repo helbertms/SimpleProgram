@@ -17,6 +17,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import model.service.DepartamentoService;
+import model.service.FuncionariosService;
 
 public class MainViewController implements Initializable{
 
@@ -31,11 +32,11 @@ public class MainViewController implements Initializable{
 	
 	// Itens do menu de usuários
 	@FXML
-	private MenuItem menuItemUsuariosIncuir;
+	private MenuItem menuItemFuncionariosIncluir;
 	@FXML
-	private MenuItem menuItemUsuariosConfigurar;
+	private MenuItem menuItemFuncionariosConfigurar;
 	@FXML
-	private MenuItem menuItemUsuariosExcluir;
+	private MenuItem menuItemFuncionariosExcluir;
 	
 	// Itens do menu de produtos
 	@FXML
@@ -90,17 +91,21 @@ public class MainViewController implements Initializable{
 	}
 	
 	
-	// MENU USUARIOS
+	// MENU FUNCIONARIOS
 	@FXML
-	public void onMenuItemUsuariosIncuir() {
-		System.out.println("onUserAdd");
+	public void onMenuItemFuncionariosIncluir() {
+		loadView("/gui/FuncionariosList.fxml", (FuncionariosListControle controle)->{
+			controle.setFuncionariosService (new FuncionariosService());
+			controle.updateTableView();
+			
+		});
 	}
 	@FXML
-	public void onMenuItemUsuariosConfigurar() {
+	public void onMenuItemFuncionariosConfigurar() {
 		System.out.println("onUserConf");
 	}
 	@FXML
-	public void onMenuItemUsuariosExcluir() {
+	public void onMenuItemFuncionariosExcluir() {
 		System.out.println("onUserDel");
 	}
 	

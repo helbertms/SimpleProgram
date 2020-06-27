@@ -152,7 +152,7 @@ public class DepartamentoListControle implements Initializable, DataChangeListen
 	private void initRemoveButtons() {
 		tableColumnREMOVE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
 		tableColumnREMOVE.setCellFactory(param -> new TableCell<Departamento, Departamento>() {
-			private final Button button = new Button("remove");
+			private final Button button = new Button("del");
 
 			@Override
 			protected void updateItem(Departamento obj, boolean empty) {

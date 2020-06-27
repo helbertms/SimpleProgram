@@ -2,12 +2,12 @@ package model.dao;
 
 import db.DB;
 import model.dao.Impl.DepartamentoDaoJDBC;
-import model.dao.Impl.SellerDaoJDBC;
+import model.dao.Impl.FuncionariosDaoJDBC;
 
 public class DaoFactury {
 
-	public static SellerDao createSellerDao() {
-		return new SellerDaoJDBC(DB.getConnection());
+	public static FuncionariosDao createFuncionariosDao() {
+		return new FuncionariosDaoJDBC(DB.getConnection());
 	}
 	
 	public static DepartamentoDao createDepartamentoDao() {
