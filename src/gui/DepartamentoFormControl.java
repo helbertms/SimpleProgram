@@ -110,14 +110,10 @@ public class DepartamentoFormControl implements Initializable{
 			exception.addError("nome", "Nome não pode ser nulo! ");
 			}
 			obj.setNome(txtNome.getText());
-		
-		
 		if(txtFilial.getText() == null || txtFilial.getText().trim().equals("")) {
 			exception.addError("filial", "Filial não pode ser nulo! ");
 			} 
 			obj.setFilial(txtFilial.getText());
-		
-		
 		if (exception.getErros().size() > 0) {
 			throw exception;
 			}

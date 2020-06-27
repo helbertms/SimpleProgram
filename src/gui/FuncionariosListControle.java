@@ -1,7 +1,8 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -16,7 +17,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -24,8 +27,11 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entites.Funcionarios;
+import model.service.DepartamentoService;
 import model.service.FuncionariosService;
 
 public class FuncionariosListControle implements Initializable, DataChangeListeners {
@@ -51,12 +57,7 @@ public class FuncionariosListControle implements Initializable, DataChangeListen
 	private TableColumn<Funcionarios, Funcionarios> tableColumnREMOVE;
 	@FXML
 	private Button btNovo;
-	@FXML
-	private Button btAtualizar;
-	@FXML
-	private Button btExcluir;
-	@FXML
-	private Button btListar;
+	
 
 	private ObservableList<Funcionarios> obsList;
 
@@ -77,7 +78,6 @@ public class FuncionariosListControle implements Initializable, DataChangeListen
 
 	private void initializeNodes() {
 
-		// Código para iniciar de forma correta o "comportamento" das colunas.
 		tableColumnId.setCellValueFactory(new PropertyValueFactory<>("id")); 
 		tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("name"));
 		tableColumnEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -85,9 +85,8 @@ public class FuncionariosListControle implements Initializable, DataChangeListen
 		Utils.formatTableColumnDate(tableColumnBirthDate, "dd/MM/yyyy");
 		tableColumnSalario.setCellValueFactory(new PropertyValueFactory<>("baseSalary"));
 		Utils.formatTableColumnDouble(tableColumnSalario, 2);
-
-		Stage stage = (Stage) Main.getMainScene().getWindow(); // código para que a tableView acompanhe o tamanho da
-																// tela
+		
+		Stage stage = (Stage) Main.getMainScene().getWindow(); // código para que a tableView acompanhe o tamanho da tela
 		tableViewFuncionarios.prefHeightProperty().bind(stage.heightProperty());
 	}
 
@@ -104,34 +103,35 @@ public class FuncionariosListControle implements Initializable, DataChangeListen
 	}
 
 	private void createFuncionariosForm(Funcionarios obj, String absolutName, Stage parentStage) {
-//		try {
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
-//			Pane pane = loader.load();
-//
-//			FuncionariosFormControl controller = loader.getController();
-//			controller.setFuncionarios(obj);
-//			controller.setFuncionariosService(new FuncionariosService());
-//			controller.subscribleDataChangeListeners(this);
-//			controller.updateFuncionarios();
-//
-//			Stage dialogStage = new Stage();
-//			dialogStage.setTitle("Funcionarios");
-//			dialogStage.setScene(new Scene(pane));
-//			dialogStage.setResizable(false);
-//			dialogStage.initOwner(parentStage);
-//			dialogStage.initModality(Modality.WINDOW_MODAL);
-//			dialogStage.showAndWait();
-//
-//		} catch (IOException e) {
-//			Alerts.showAlert("Error", "Error in metod creat departament form", e.getMessage(), AlertType.ERROR);
-//		}
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
+			Pane pane = loader.load();
+
+			FuncionariosFormControl controller = loader.getController();
+			controller.setFuncionarios(obj);
+			controller.setServices(new FuncionariosService(), new DepartamentoService());
+			controller.carregarDepartamento();//  <--- lista os departamentos no COMBOBOX
+			controller.subscribleDataChangeListeners(this);
+			controller.updateFuncionarios();
+
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Funcionarios");
+			dialogStage.setScene(new Scene(pane));
+			dialogStage.setResizable(false);
+			dialogStage.initOwner(parentStage);
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.showAndWait();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			Alerts.showAlert("Error", "Error in metod creat departament form", e.getMessage(), AlertType.ERROR);
+		}
 	}
 
 	@Override
-
-	// método que atualiza os dados da tabela quando houver mudança
 	public void onDataChanged() {
 		updateTableView();
+		// método que atualiza os dados da tabela quando houver mudança
 	}
 
 	private void initEditButtons() {

@@ -11,7 +11,7 @@
 
 <VBox prefHeight="593.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DepartamentoListControle">
    <children>
-      <Label prefHeight="30.0" prefWidth="75.0" text="Produtos">
+      <Label prefHeight="38.0" prefWidth="181.0" text="Departamentos">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -19,7 +19,7 @@
             <Insets left="5.0" top="5.0" />
          </padding>
       </Label>
-      <ToolBar prefHeight="40.0" prefWidth="200.0">
+      <ToolBar prefHeight="54.0" prefWidth="826.0">
         <items>
           <Button fx:id="btNovo" mnemonicParsing="false" onAction="#onBtNovoAction" text="Novo" />
         </items>

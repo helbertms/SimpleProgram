@@ -16,13 +16,10 @@ public class Funcionarios implements Serializable{
 	private Date birthDate;
 	private Double baseSalary;
 	
-	
-	 // No código abaixo criamos uma associação com a CLASSE DEPARTMENT
-	 
+
 	private Departamento department;
 	
-	// Construtores 
-	
+		
 	public Funcionarios() {
 	}
 

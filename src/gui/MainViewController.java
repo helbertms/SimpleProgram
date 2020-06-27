@@ -22,7 +22,7 @@ import model.service.FuncionariosService;
 public class MainViewController implements Initializable{
 
 	// Atributos dos ítens de menu ----------------------------------------
-	// Itens do menu de cadastro
+	
 	@FXML
 	private MenuItem menuItemCadastroEmpresa;
 	@FXML
@@ -30,7 +30,7 @@ public class MainViewController implements Initializable{
 	@FXML
 	private MenuItem menuItemCadastroDepartamento;
 	
-	// Itens do menu de usuários
+	
 	@FXML
 	private MenuItem menuItemFuncionariosIncluir;
 	@FXML
@@ -38,7 +38,7 @@ public class MainViewController implements Initializable{
 	@FXML
 	private MenuItem menuItemFuncionariosExcluir;
 	
-	// Itens do menu de produtos
+	
 	@FXML
 	private MenuItem menuItemProdutoIncuir;
 	@FXML
@@ -46,8 +46,7 @@ public class MainViewController implements Initializable{
 	@FXML
 	private MenuItem menuItemProdutoExcluir;
 	
-	// Itens do menu ajuda
-	
+		
 	@FXML
 	private MenuItem menuItemAjudaSobre;
 	@FXML
@@ -56,7 +55,6 @@ public class MainViewController implements Initializable{
 	// Métodos e ou controle de eventos ----------------------------------------
 	
 	
-	// MENU CADASTROS
 	@FXML
 	public void onMenuItemCadastroEmpresaAction() {
 		System.out.println("onMenuItemCadastroEmpresaAction");
@@ -67,16 +65,14 @@ public class MainViewController implements Initializable{
 	}
 	@FXML
 	public void onMenuItemCadastroDepartamentoAction() {
-		// Nessa chamada de método há uma AÇÃO DE INICIALIZAÇÃO COMO PARAMETRO
 		loadView("/gui/DepartamentoList.fxml", (DepartamentoListControle controle)->{
 			controle.setDepartamentoService (new DepartamentoService());
 			controle.updateTableView();
-			
+			// Nessa chamada de método há uma AÇÃO DE INICIALIZAÇÃO COMO PARAMETRO	
 		});
 	}
 	
 	
-	// MENU PRODUTOS
 	@FXML
 	public void onMmenuItemProdutoIncuir() {
 		System.out.println("onProdAdd");
@@ -91,13 +87,12 @@ public class MainViewController implements Initializable{
 	}
 	
 	
-	// MENU FUNCIONARIOS
 	@FXML
 	public void onMenuItemFuncionariosIncluir() {
 		loadView("/gui/FuncionariosList.fxml", (FuncionariosListControle controle)->{
 			controle.setFuncionariosService (new FuncionariosService());
 			controle.updateTableView();
-			
+			// Nessa chamada de método há uma AÇÃO DE INICIALIZAÇÃO COMO PARAMETRO
 		});
 	}
 	@FXML
@@ -110,8 +105,6 @@ public class MainViewController implements Initializable{
 	}
 	
 	
-	// MENUS AJUDA
-	
 	@FXML
 	public void onMenuItemAjudaSobre() {
 		loadView("/gui/AjudaSobre.fxml", x->{});
@@ -121,7 +114,8 @@ public class MainViewController implements Initializable{
 		System.out.println("onMenuItemAjudaSuporte");
 	}
 	
-	// Métodos Inicialize da interface INICIALIZEBLE ----------------------------------------
+	
+	
 	@Override
 	public void initialize(URL uri, ResourceBundle rb) {
 	}
@@ -135,22 +129,14 @@ public class MainViewController implements Initializable{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
 			VBox newVbox = loader.load();
 			
-			Scene mainScene = Main.getMainScene();// *1
-			VBox mainVbox = (VBox)((ScrollPane)mainScene.getRoot()).getContent();// *2
+			Scene mainScene = Main.getMainScene();// -1-
+			VBox mainVbox = (VBox)((ScrollPane)mainScene.getRoot()).getContent();// -2-
 			
 			Node mainMenu = mainVbox.getChildren().get(0);// Guarda uma referencia para o menu, pegando o primeiro o "children" na posição 0 
 			mainVbox.getChildren().clear(); // aqui eu limpo todos os filhos do meu mainVbox
 			mainVbox.getChildren().add(mainMenu);
 			mainVbox.getChildren().addAll(newVbox.getChildren());
-			/* 
-			 * 1
-			 *  Instancia uma "SCENE" da janela principal (MAIN)
-			 *  Isso foi possível após declarar um ATRIBUTO mainScene da classe Scenee construir o método "getMainScene"
-			 *
-			 * 2
-			 * Pegar uma referencia do VBOX da JANELA PRINCIPAL (mainScene instanciado na classe Main), criando uma variável da classe VBOX onde ele 
-			 * recebe o método getRoot (que pega o PRIMEIRO elemento da View "<ScrollPane") sendo necessário o casting do SCROLLPANE e casting do VBox. 
-			 */
+			
 			
 			// --- inicializando (inserindo) os dados no VIEW (tabela do Departamento)
 			// --- As duas linhas abaixo executam a ação passada como método na chamada da função loadView
@@ -163,3 +149,13 @@ public class MainViewController implements Initializable{
 		}
 	}
 }
+
+/* 
+ * Anotação -1-
+ *  Instancia uma "SCENE" da janela principal (MAIN)
+ *  Isso foi possível após declarar um ATRIBUTO mainScene da classe Scenee construir o método "getMainScene"
+ *
+ * Anotação -2-
+ * Pegar uma referencia do VBOX da JANELA PRINCIPAL (mainScene instanciado na classe Main), criando uma variável da classe VBOX onde ele 
+ * recebe o método getRoot (que pega o PRIMEIRO elemento da View "<ScrollPane") sendo necessário o casting do SCROLLPANE e casting do VBox. 
+ */
