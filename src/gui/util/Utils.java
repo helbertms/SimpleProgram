@@ -35,6 +35,7 @@ public class Utils {
 			return null;
 		}
 	}
+	
 
 	public static <T> void formatTableColumnDate(TableColumn<T, Date> tableColumn, String format) {
 		tableColumn.setCellFactory(column -> {

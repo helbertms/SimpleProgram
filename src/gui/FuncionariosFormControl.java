@@ -1,6 +1,8 @@
 package gui;
 
 import java.net.URL;
+import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -97,6 +99,7 @@ public class FuncionariosFormControl implements Initializable {
 			funcionarios = getFormDate();
 			service.saveOrUpdate(funcionarios);
 			notifyChangeListeners();
+			labelSucess.setText("Salvo com sucesso!");
 
 		} catch (ValidationException e) {
 			setErrorMessage(e.getErros());
@@ -105,11 +108,7 @@ public class FuncionariosFormControl implements Initializable {
 			Alerts.showAlert("Error", "Erro ao salvar objeto - Insert button in class FuncionariosFormControl",
 					e.getMessage(), AlertType.ERROR);
 		}
-
-		txtNome.clear();
-		txtEmail.clear();
-		txtBaseSalary.clear();
-
+		
 	}
 
 	// envia um "alerta" quando houver mudança nos objetos contidos
@@ -117,27 +116,51 @@ public class FuncionariosFormControl implements Initializable {
 		for (DataChangeListeners listeners : dataChangeListeners) {
 			listeners.onDataChanged();
 		}
-
 	}
 
+	
 	private Funcionarios getFormDate() {
 
 		Funcionarios obj = new Funcionarios();
 		ValidationException exception = new ValidationException("Validation exception! ");
+		
 		obj.setId(Utils.tryParseToInt(txtId.getText()));
 
 		if (txtNome.getText() == null || txtNome.getText().trim().equals("")) {
-			exception.addError("name", "Nome não pode ser nulo! ");
+			exception.addError("nome", "Nome não pode ser nulo! ");
 		}
 		obj.setName(txtNome.getText());
+		
+		
 		if (txtEmail.getText() == null || txtEmail.getText().trim().equals("")) {
-			exception.addError("Email", "Email não pode ser nulo! ");
+			exception.addError("email", "Email não pode ser nulo! ");
 		}
-		obj.setEmail(txtEmail.getText());
+		else {
+			obj.setEmail(txtEmail.getText());
+		}
+		
+		if (dpBirthDate.getValue()== null) {
+			exception.addError("birthDate", "Data de não pode ser nulo! ");
+		}
+		else {
+			Instant instant = Instant.from(dpBirthDate.getValue().atStartOfDay(ZoneId.systemDefault()));
+			obj.setBirthDate(Date.from(instant));
+		}
+		
+		
+		if (txtBaseSalary.getText() == null || txtBaseSalary.getText().trim().equals("")) {
+			exception.addError("baseSalary", "Salário não pode ser nulo! ");
+		}
+		else {
+			obj.setBaseSalary(Utils.tryParseToDouble(txtBaseSalary.getText()));
+		}
+		
 		if (exception.getErros().size() > 0) {
 			throw exception;
 		}
-
+		
+		obj.setDepartment(cbDepartamento.getValue());
+		
 		return obj;
 	}
 
@@ -189,14 +212,13 @@ public class FuncionariosFormControl implements Initializable {
 	private void setErrorMessage(Map<String, String> errors) {
 		Set<String> fields = errors.keySet();
 
-		if (fields.contains("nome")) {
-			labelError.setText(errors.get("nome"));
-		}
-		if (fields.contains("filial")) {
-			labelErrorEmail.setText(errors.get("email"));
-		}
+		labelError.setText((fields.contains("nome")? errors.get("nome"):""));
+		labelErrorEmail.setText((fields.contains("email")? errors.get("email"):""));
+		labelBaseSalary.setText((fields.contains("baseSalary")? errors.get("baseSalary"):""));
+		labelBirthDate.setText((fields.contains("birthDate")? errors.get("birthDate"):""));
 	}
 
+	
 	private void initializeComboBoxDepartamento() {
 		Callback<ListView<Departamento>, ListCell<Departamento>> factory = lv -> new ListCell<Departamento>() {
 			@Override

@@ -14,6 +14,14 @@
    <children>
       <Pane prefHeight="304.0" prefWidth="484.0">
          <children>
+            <TextField fx:id="txtId" layoutX="65.0" layoutY="61.0" prefHeight="25.0" prefWidth="49.0" />
+            <ComboBox fx:id="cbDepartamento" layoutX="226.0" layoutY="61.0" onAction="#carregarDepartamento" prefHeight="25.0" prefWidth="239.0" />
+            <TextField fx:id="txtNome" layoutX="63.0" layoutY="100.0" prefHeight="25.0" prefWidth="401.0" />
+            <TextField fx:id="txtEmail" layoutX="63.0" layoutY="147.0" prefHeight="25.0" prefWidth="401.0" />
+            <DatePicker fx:id="dpBirthDate" layoutX="81.0" layoutY="194.0" />
+            <TextField fx:id="txtBaseSalary" layoutX="310.0" layoutY="194.0" />
+            <Button fx:id="btSalvar" layoutX="321.0" layoutY="259.0" mnemonicParsing="false" onAction="#onSalvarAction" prefHeight="25.0" prefWidth="63.0" text="Salvar" />
+            <Button fx:id="btFechar" layoutX="396.0" layoutY="259.0" mnemonicParsing="false" onAction="#onFecharAction" prefHeight="25.0" prefWidth="63.0" text="Fechar" />
             <Label layoutX="18.0" layoutY="22.0" text="Novo Funcionario">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -29,27 +37,19 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtEmail" layoutX="63.0" layoutY="138.0" prefHeight="25.0" prefWidth="401.0" />
-            <TextField fx:id="txtNome" layoutX="63.0" layoutY="100.0" prefHeight="25.0" prefWidth="401.0" />
-            <Button fx:id="btSalvar" layoutX="321.0" layoutY="234.0" mnemonicParsing="false" onAction="#onSalvarAction" prefHeight="25.0" prefWidth="63.0" text="Salvar" />
-            <Button fx:id="btFechar" layoutX="401.0" layoutY="234.0" mnemonicParsing="false" onAction="#onFecharAction" prefHeight="25.0" prefWidth="63.0" text="Fechar" />
             <Label layoutX="18.0" layoutY="65.0" text="ID" />
-            <TextField fx:id="txtId" layoutX="65.0" layoutY="61.0" prefHeight="25.0" prefWidth="49.0" />
-            <Label layoutX="18.0" layoutY="185.0" text="Nascimento" />
-            <Label layoutX="270.0" layoutY="185.0" text="Salário" />
+            <Label layoutX="16.0" layoutY="198.0" text="Nascimento" />
+            <Label layoutX="264.0" layoutY="198.0" text="Salário" />
             <Label layoutX="136.0" layoutY="65.0" text="Departamento" />
-            <TextField fx:id="txtBaseSalary" layoutX="316.0" layoutY="181.0" />
-            <ComboBox fx:id="cbDepartamento" layoutX="226.0" layoutY="61.0" onAction="#carregarDepartamento" prefHeight="25.0" prefWidth="239.0" />
-            <DatePicker fx:id="dpBirthDate" layoutX="83.0" layoutY="181.0" />
-            <Label fx:id="labelBaseSalary" layoutX="260.0" layoutY="206.0" textFill="#f20707" />
-            <Label fx:id="labelError" layoutX="17.0" layoutY="238.0" prefHeight="17.0" prefWidth="281.0" textFill="#dd110a">
+            <Label fx:id="labelBaseSalary" layoutX="309.0" layoutY="226.0" prefHeight="17.0" prefWidth="149.0" textFill="#f20707" />
+            <Label fx:id="labelError" layoutX="63.0" layoutY="125.0" prefHeight="17.0" prefWidth="281.0" textFill="#dd110a">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Label fx:id="labelSucess" layoutX="18.0" layoutY="238.0" textFill="#e42b0b" />
-            <Label fx:id="labelErrorEmail" layoutX="63.0" layoutY="163.0" prefHeight="17.0" prefWidth="401.0" textFill="#e40a0a" />
-            <Label fx:id="labelBirthDate" layoutX="16.0" layoutY="206.0" prefHeight="17.0" prefWidth="225.0" textFill="#f20404" />
+            <Label fx:id="labelSucess" layoutX="19.0" layoutY="263.0" prefHeight="17.0" prefWidth="188.0" textFill="#0db20b" />
+            <Label fx:id="labelErrorEmail" layoutX="63.0" layoutY="173.0" prefHeight="17.0" prefWidth="401.0" textFill="#e40a0a" />
+            <Label fx:id="labelBirthDate" layoutX="81.0" layoutY="226.0" prefHeight="17.0" prefWidth="174.0" textFill="#f20404" />
          </children>
       </Pane>
    </children>

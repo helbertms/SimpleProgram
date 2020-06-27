@@ -12,6 +12,11 @@
    <children>
       <Pane prefHeight="221.0" prefWidth="330.0">
          <children>
+            <TextField fx:id="txtId" layoutX="65.0" layoutY="61.0" prefHeight="25.0" prefWidth="177.0" />
+            <TextField fx:id="txtNome" layoutX="63.0" layoutY="100.0" prefHeight="25.0" prefWidth="177.0" />
+            <TextField fx:id="txtFilial" layoutX="63.0" layoutY="138.0" prefHeight="25.0" prefWidth="177.0" />
+            <Button fx:id="btInserir" layoutX="256.0" layoutY="89.0" mnemonicParsing="false" onAction="#onInserirAction" prefHeight="47.0" prefWidth="49.0" text="Inserir" />
+            <Button fx:id="btFechar" layoutX="265.0" layoutY="181.0" mnemonicParsing="false" onAction="#onFecharAction" text="Fechar" />
             <Label layoutX="18.0" layoutY="22.0" prefHeight="17.0" prefWidth="150.0" text="Novo Departamento">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -27,17 +32,12 @@
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <TextField fx:id="txtFilial" layoutX="63.0" layoutY="138.0" prefHeight="25.0" prefWidth="177.0" />
-            <TextField fx:id="txtNome" layoutX="63.0" layoutY="100.0" prefHeight="25.0" prefWidth="177.0" />
             <Label fx:id="labelStatus" layoutX="17.0" layoutY="185.0" prefHeight="17.0" prefWidth="239.0" textFill="#dd110a">
                <padding>
                   <Insets left="5.0" />
                </padding>
             </Label>
-            <Button fx:id="btInserir" layoutX="256.0" layoutY="89.0" mnemonicParsing="false" onAction="#onInserirAction" prefHeight="47.0" prefWidth="49.0" text="Inserir" />
-            <Button fx:id="btFechar" layoutX="265.0" layoutY="181.0" mnemonicParsing="false" onAction="#onFecharAction" text="Fechar" />
             <Label layoutX="18.0" layoutY="65.0" text="ID" />
-            <TextField fx:id="txtId" layoutX="65.0" layoutY="61.0" prefHeight="25.0" prefWidth="177.0" />
             <Label fx:id="labelSucess" layoutX="18.0" layoutY="185.0" textFill="#23bf61" />
          </children>
       </Pane>
